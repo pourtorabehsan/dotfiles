@@ -122,19 +122,12 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
-if [ -e /Users/ehsanpourtorab/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ehsanpourtorab/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
 
 [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
 
-# cloudplatform: add Shopify clusters to your local kubernetes config
-export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}/Users/ehsanpourtorab/.kube/config:/Users/ehsanpourtorab/.kube/config.shopify.cloudplatform
-for file in /Users/ehsanpourtorab/src/github.com/Shopify/cloudplatform/workflow-utils/*.bash; do source ${file}; done
-kubectl-short-aliases
 
 alias ll="ls -la"
-alias src="cd ~/src/github.com/Shopify"
+alias src="cd ~/src/"
 bindkey '^ ' autosuggest-accept
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
