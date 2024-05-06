@@ -87,7 +87,7 @@ plugins=(git
 	 zsh-interactive-cd
 	 web-search
 	 history
-	 copydir
+	 copypath
 	 copyfile
 	 docker
 	 docker-compose
@@ -122,16 +122,27 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+if [ -e /Users/ehsanpourtorab/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/ehsanpourtorab/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
 
 [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
 
 
 alias ll="ls -la"
-alias src="cd ~/src/"
+alias src="cd ~/src/github.com/Shopify"
+alias erc="cd ~/src/github.com/pourtorabehsan"
+alias docker="podman"
+alias wlsf="kubectl --context apps-b-us-ce1-la2 -n watchkeeper-staging-katesql-unrestricted-a7cu logs -f deployments/watchkeeper"
+alias wls="kubectl --context apps-b-us-ce1-la2 -n watchkeeper-staging-katesql-unrestricted-a7cu logs deployments/watchkeeper"
+alias wlpf="kubectl --context apps-b-us-ce1-cy6 -n watchkeeper-production-katesql-unrestricted-dxqp logs -f deployments/watchkeeper"
+alias wlp="kubectl --context apps-b-us-ce1-cy6 -n watchkeeper-production-katesql-unrestricted-dxqp logs deployments/watchkeeper"
+alias wpp="kubectl --context apps-b-us-ce1-cy6 -n watchkeeper-production-katesql-unrestricted-dxqp get pods"
 bindkey '^ ' autosuggest-accept
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
+export PATH=/Applications/RubyMine.app/Contents/MacOS:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
