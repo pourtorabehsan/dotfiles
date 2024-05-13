@@ -148,3 +148,8 @@ export PATH=/Applications/RubyMine.app/Contents/MacOS:$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# cloudplatform: add Shopify clusters to your local kubernetes config
+export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}/Users/ehsanpourtorab/.kube/config:/Users/ehsanpourtorab/.kube/config.shopify.cloudplatform
+for file in /Users/ehsanpourtorab/src/github.com/Shopify/cloudplatform/workflow-utils/*.bash; do source ${file}; done
+kubectl-short-aliases
